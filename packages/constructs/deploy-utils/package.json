@@ -1,0 +1,14 @@
+{
+  "name": "deploy-utils",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc --noEmit",
+    "deploy": "echo no need to deploy utils"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "^2.142.1",
+    "constructs": "^10.3.0"
+  }
+}

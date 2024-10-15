@@ -1,0 +1,20 @@
+{
+    "name": "open-next-cdk",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": "https://github.com/valex91/open-next-cdk",
+    "license": "MIT",
+    "private": true,
+    "workspaces": [
+      "packages/app",
+      "packages/constructs/*"
+    ],
+    "scripts": {
+      "deploy": "yarn workspaces -p run deploy",
+      "build": "yarn workspaces -p run build"
+    },
+    "devDependencies": {
+      "typescript": "^5.4.5"
+    }
+  }
+  
