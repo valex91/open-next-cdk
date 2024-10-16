@@ -11,6 +11,7 @@ import {OpenNextStaticAssets} from './nextJSStaticAssetsConstruct';
 import {DOMAIN_NAME} from './constants';
 import {EndpointType, SecurityPolicy} from 'aws-cdk-lib/aws-apigateway';
 import {StringParameter} from 'aws-cdk-lib/aws-ssm';
+import {NextjsWarmer} from './NextJsWarmer';
 
 export type NextjsProps = {
   nextjsPath: string;
@@ -20,7 +21,6 @@ export type NextjsProps = {
 
 export class Nextjs extends Construct {
   serverFunction: NextjsServerFunction;
-
   restApi: NextjsApiGateway;
 
   constructor(scope: Construct, id: string, props: NextjsProps) {
@@ -111,6 +111,11 @@ export class Nextjs extends Construct {
       endpointConfiguration: {types: [EndpointType.REGIONAL]},
       binaryMediaTypes: ['*/*'],
       minimumCompressionSize: 0,
+    });
+
+    new NextjsWarmer(this, 'NextjsWarmer', {
+      nextBuild,
+      restApi: this.restApi,
     });
 
     // new ARecord(this, 'apiDNS', {

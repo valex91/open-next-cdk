@@ -13,9 +13,7 @@ export interface NextjsApiGatewayProps extends RestApiProps {
 
 export class NextjsApiGateway extends RestApi {
   public readonly bucket: IBucket;
-
   public readonly executeRole: iam.Role;
-
   public readonly serverFunction: IFunction;
 
   constructor(scope: Construct, id: string, props: NextjsApiGatewayProps) {
